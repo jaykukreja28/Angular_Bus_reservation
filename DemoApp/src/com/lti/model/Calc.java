@@ -7,4 +7,7 @@ public class Calc {
 		public void subs(int n1, int n2){
 			System.out.println("Subs = "+ (n1-n2));
 		}
+		public void mul(int n1, int n2){
+			System.out.println("Multiplication = "+ (n1*n2));
+		}
 }
