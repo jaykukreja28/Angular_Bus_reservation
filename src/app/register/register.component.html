@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>The Easiest Way to Add Input Masks to Your Forms</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
+</head>
+
+<body>
+    <div class="registration-form">
+        <form #myForm="ngForm" (ngSubmit)="registration(myForm)">
+
+            <div class="form-icon">
+                <span><i class="icon icon-user"></i></span>
+            </div>
+
+            <div class="form-group">
+                <input type="text" class="form-control item" placeholder="Username" required minlength="5"
+                    #userName="ngModel" id="uname" name="uname" [(ngModel)]=user.userName />
+                <div style="color:red" *ngIf="userName.invalid && (userName.touched || userName.dirty)">
+                    <div *ngIf="userName.errors?.required">Name cannot be empty!</div>
+                    <div *ngIf="userName.errors?.minlength">Length cannot be less than 5!</div>
+                </div>
+            </div>
+
+
+
+
+            <div class="form-group">
+                <input  type="password" name="upassword" class="form-control item" id="upassword" placeholder="Password"
+                pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,30})" required #userPassword="ngModel" [(ngModel)]=user.userPassword/>
+
+                <div style="color:red" *ngIf="userPassword.invalid && (userPassword.touched || userPassword.dirty)">
+                    <div *ngIf="userPassword.errors?.pattern">
+                        Must contain at least one number and one uppercase and
+                        lowercase letter, and at least 8 or more characters!
+                    </div>
+                    <div *ngIf="userPassword.errors?.required">Password cannot be empty!</div>
+                </div>
+
+            </div>
+
+
+
+
+            <div class="form-group">
+                <input type="text" class="form-control item"  placeholder="Email" id="uemail" name="uemail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required
+                #userEmail="ngModel" [(ngModel)]=user.userEmail />
+             <div style="color:red" *ngIf="userEmail.invalid && (userEmail.touched || userEmail.dirty)">
+                <div *ngIf="userEmail.errors?.pattern">Email is not valid!</div>
+                <div *ngIf="userEmail.errors?.required">Email cannot be empty!</div>
+              </div>
+            </div>
+
+
+
+
+        
+            <div class="form-group">
+                <input type="text" class="form-control item" placeholder="Phone Number" id="uphone" name="uphone" pattern="^\d{10}$" required #userContactNo="ngModel" [(ngModel)]=user.userContactNo/>
+                <div style="color:red" *ngIf="userContactNo.invalid && (userContactNo.touched || userContactNo.dirty)">
+                    <div *ngIf="userContactNo.errors?.pattern">Phone number should contain 10 digits!</div>
+                    <div *ngIf="userContactNo.errors?.required">Phone cannot be empty!</div>
+                </div>
+            </div>
+           
+
+
+            
+
+
+          
+
+
+            <div class="form-group">
+                <input type="date" class="form-control item" id="birth-date" placeholder="Birth Date">
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-block create-account">Create Account</button>
+            </div>
+
+        </form>
+        <!-- <div class="social-media">
+            <h5>Sign up with social media</h5>
+            <div class="social-icons">
+                <a href="#"><i class="icon-social-facebook" title="Facebook"></i></a>
+                <a href="#"><i class="icon-social-google" title="Google"></i></a>
+                <a href="#"><i class="icon-social-twitter" title="Twitter"></i></a>
+            </div>
+        </div> -->
+    </div>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+    <script src="assets/js/script.js"></script>
+</body>
+
+</html>
